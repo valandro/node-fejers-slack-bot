@@ -1,0 +1,29 @@
+{
+  "name": "slack-bot",
+  "version": "1.0.0",
+  "description": "A slack bot using nodejs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -r dotenv/config src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valandro/node-slack-bot.git"
+  },
+  "keywords": [
+    "slack",
+    "bot"
+  ],
+  "author": "Lucas Valandro",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/valandro/node-slack-bot/issues"
+  },
+  "homepage": "https://github.com/valandro/node-slack-bot#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^6.2.0",
+    "slackbots": "^1.2.0"
+  }
+}
