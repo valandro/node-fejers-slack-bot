@@ -14,7 +14,7 @@ const params = {
 // Log errors
 bot.on('error', err => { console.log('error', err); });
 
-// Handling messages
+// Handle messages
 bot.on('message', data => {
     if(data.type == 'member_joined_channel') {
         welcomeMessage(data,bot,params);
