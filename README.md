@@ -5,7 +5,6 @@
 ### @botquedale
 
 <img src="static/img/fejers.png" height="50" width="50">
-<img src="static/img/slack.png" height="45" width="45">
 
 A Slack bot built using `NodeJS` that ...
 
