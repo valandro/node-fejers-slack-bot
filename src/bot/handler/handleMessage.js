@@ -1,9 +1,12 @@
-const handleAnthem = require('./handleAnthem');
+const handlePrivateMessage = require('./handlePrivateMessage');
+const handlePublicMessage = require('./handlePublicMessage');
 
 module.exports = (data, bot, params) => {
-    const anthemRe = /<@([0-9]|[a-zA-Z])*> hino/g;
-    const msg = data.text;
-    if(anthemRe.test(msg)) {
-        handleAnthem(data,bot,params);
+    const privateMessage = /D([a-zA-Z]|[0-9])*/g;
+    const channel = data.channel;
+    if(privateMessage.test(channel)) {
+        handlePrivateMessage(data,bot,params);
+    } else {
+        handlePublicMessage(data,bot,params);
     }
 }

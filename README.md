@@ -6,7 +6,7 @@
 
 <img src="static/img/fejers.png" height="50" width="50">
 
-A Slack bot built using `NodeJS` that ...
+A Slack bot built using `NodeJS` that ... actualy I don't know yet.
 
 ### License
 Apache License. [Click here for more information.](LICENSE)
