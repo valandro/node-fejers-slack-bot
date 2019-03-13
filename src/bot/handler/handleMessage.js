@@ -7,6 +7,7 @@ module.exports = (data, bot, params) => {
     if(privateMessage.test(channel)) {
         handlePrivateMessage(data,bot,params);
     } else {
+        console.log('public-message');
         handlePublicMessage(data,bot,params);
     }
 }
