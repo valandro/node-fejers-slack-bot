@@ -1,5 +1,5 @@
-module.exports = (bot, params, id) => {
-    bot.postMessage(id,
+module.exports = (bot, params, channel) => {
+    bot.postMessage(channel,
         ':flag-at: *ALENTO DA FEJERS*  :flag-at:\n' 
         + 'Sul Sul Sul Sul Sul Sul Sul Sul\n' 
         + 'Eu sou do Sul!\n'
