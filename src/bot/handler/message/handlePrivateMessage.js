@@ -1,4 +1,4 @@
-const handleAnthem = require('./handleAnthem');
+const handleAnthem = require('../anthem/handleAnthem');
 
 module.exports = (data, bot, params, client) => {
     const anthemRe = /hino/g;

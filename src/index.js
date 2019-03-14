@@ -1,6 +1,6 @@
 const SlackBot = require('slackbots');
-const handleMessage = require('./bot/handler/handleMessage');
-const welcomeMessage = require('./bot/handler/welcomeMessage');
+const handleMessage = require('./bot/handler/message/handleMessage');
+const welcomeMessage = require('./bot/handler/message/welcomeMessage');
 const MongoClient = require('mongodb').MongoClient;
 
 const bot = new SlackBot({

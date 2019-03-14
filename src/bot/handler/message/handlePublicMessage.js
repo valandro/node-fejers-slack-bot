@@ -1,5 +1,5 @@
-const handleAnthem = require('./handleAnthem');
-const handleTopic = require('./handleTopic');
+const handleAnthem = require('../anthem/handleAnthem');
+const handleTopic = require('../topic/handleTopic');
 
 module.exports = (data, bot, params, client) => {
     const msg = data.text;
