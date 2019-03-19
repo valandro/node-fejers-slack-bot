@@ -5,6 +5,8 @@ module.exports = (bot, params, channel) => {
         + '`hino` Peça para o bot cantar o hino da única federa que dale!\n'
         + '`ps` Sugere alguns links relacionados com Processo Seletivo.\n'
         + '`pe` Sugere alguns links relacionados com Planejamento Estratégico.\n'
-        + 'Se você tiver alguma sugestão ou encontrou algum bug, fale com *@valandro.*\n', 
+        + '`time` Sugere alguns links relacionados à Construção de Times.\n'
+        + '`capacitacao` Sugere alguns links relacionados à Capacitação.\n\n'
+        + '\n\n\nTem alguma sugestão ou encontrou algum bug? Fale com *@valandro.*\n', 
         params);
 }
