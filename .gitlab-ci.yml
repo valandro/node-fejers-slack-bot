@@ -1,0 +1,44 @@
+image: node:8-slim
+
+stages:
+  - deploy_test
+
+variables:
+  SERVICE_NAME: 'fejers-bot'
+  DEPLOY_PATH: '/home/projects/$SERVICE_NAME'
+  SERVICE_DIST_FILE_PATH: 'src/*.js'
+  APP_PORT: 3000
+
+before_script:
+  - echo "Before script..."
+  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+  - apt-get -y install zip unzip
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+
+deploy_test:
+  variables:
+    DEPLOY_HOST: 'root@159.203.67.88'
+    DEPLOY_PATH: '/home/projects/$SERVICE_NAME'
+    DIST_FILE: '$SERVICE_NAME-distribution.zip'
+    DOCKER_IMAGE_NAME: '$SERVICE_NAME/node'
+  stage: deploy_test
+  tags:
+    - deploy_test
+  script:
+  - echo "Deploy test starting..."
+  - ssh -o StrictHostKeyChecking=no $DEPLOY_HOST 'exit'
+  - ssh $DEPLOY_HOST "rm -rf $DEPLOY_PATH/*"
+  - ssh $DEPLOY_HOST "mkdir -p $DEPLOY_PATH/"
+  - echo SLACK_TOKEN=$SLACK_TOKEN >! .env
+  - zip -r $DIST_FILE Dockerfile package.json .env $SERVICE_DIST_FILE_PATH
+  - scp $DIST_FILE $DEPLOY_HOST:$DEPLOY_PATH/
+  - ssh $DEPLOY_HOST "unzip $DEPLOY_PATH/$DIST_FILE -d $DEPLOY_PATH/"
+  - ssh $DEPLOY_HOST "rm $DEPLOY_PATH/$DIST_FILE"
+  - ssh $DEPLOY_HOST "docker system prune -f"
+  - ssh $DEPLOY_HOST "cd $DEPLOY_PATH/ && cp /home/env/$SERVICE_NAME/.env && docker build -f Dockerfile -t $DOCKER_IMAGE_NAME ."
+  - ssh $DEPLOY_HOST "docker stop $SERVICE_NAME || true && docker rm $SERVICE_NAME || true"
+  - ssh $DEPLOY_HOST "docker run -e APP_PORT=$APP_PORT -p $APP_PORT:$APP_PORT --name $SERVICE_NAME -d $DOCKER_IMAGE_NAME"
+  - echo "Deploy test finished"
