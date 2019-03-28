@@ -1,6 +1,6 @@
 FROM node:8-slim
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /
 # Install app dependencies
 COPY package*.json ./
 RUN npm install
