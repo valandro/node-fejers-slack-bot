@@ -6,7 +6,7 @@ stages:
 variables:
   SERVICE_NAME: 'fejers-bot'
   DEPLOY_PATH: '/home/projects/$SERVICE_NAME'
-  SERVICE_DIST_FILE_PATH: 'src/**/*.js'
+  SERVICE_DIST_FILE_PATH: 'src/'
   APP_PORT: 3000
 
 before_script:
