@@ -31,6 +31,7 @@ bot.on('message', data => {
             { useNewUrlParser: true }, function(err, client) {
                 if(err) console.log(err);
                 else handleMessage(data,bot,params, client);
+                client.close();
         })
     }
 });
