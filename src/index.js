@@ -12,13 +12,6 @@ const params = {
     icon_emoji: ':fejers:'
 };
 
-MongoClient.connect(process.env.MONGO_URI, 
-    { useNewUrlParser: true }, function(err, client) {
-    if(err) console.log('Cannot connect to MongoDB.');
-    else console.log('Connected successfuly to MongoDB.');
-    client.close();
-});
-
 // Log errors
 bot.on('error', err => { console.log('error', err); });
 
