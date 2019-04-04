@@ -23,7 +23,8 @@ bot.on('message', data => {
         MongoClient.connect(process.env.MONGO_URI, 
             { useNewUrlParser: true }, function(err, client) {
                 if(err) console.log(err);
-                else handleMessage(data,bot,params, client);
+                handleMessage(data,bot,params, client);
+                client.close();
         })
     }
 });
